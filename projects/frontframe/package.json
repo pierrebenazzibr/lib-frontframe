@@ -1,6 +1,22 @@
 {
   "name": "frontframe",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Pacote útil para facilitar e agilizar o desenvolvimento de uma aplicação frontend.",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierrebenazzibr/lib-frontframe.git"
+  },
+  "keywords": ["angular", "frontend", "ui", "primeng", "pierre", "benazzi"],
+  "author": {
+    "name": "Pierre Benazzi",
+    "email": "pierrebenazzibr@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/pierrebenazzibr/lib-frontframe/issues"
+  },
+  "homepage": "https://github.com/pierrebenazzibr/lib-frontframe/blob/master/README.md",
+  "license": "GNU General Public License v3.0",
   "peerDependencies": {
     "@angular/common": "^6.1.0",
     "@angular/core": "^6.1.0"
