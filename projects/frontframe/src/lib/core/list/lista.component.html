@@ -1,0 +1,80 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+
+        <lib-app-popover-input #poi></lib-app-popover-input>
+
+        <!-- <p>tipoLista: {{tipoLista}}</p> -->
+        <p-table #tt
+                 *ngIf="refreshHackFix"
+                 [autoLayout]="true"
+                 [columns]="lista.cols"
+                 [value]="lista.resultset?.content"
+                 [responsive]="true"
+                 [paginator]="true"
+                 [lazy]="true"
+                 [rows]="size"
+                 [totalRecords]="totalRegistros"
+                 [loading]="loading"
+                 (onLazyLoad)="aoMudarPagina($event)"
+                 (onRowSelect)="aoSelecionarLinha($event, null)"
+                 pSelectableRowDblClick
+                 selectionMode="single">
+
+            <ng-template pTemplate="caption" *ngIf="pHasCaption">
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-file-excel-o" iconPos="left" (click)="tt.exportCSV()" style="float:left;"></button>
+
+                    <!-- busca-rapida-->
+                    <span *ngIf="metadataBuscaRapida"
+                          style="float: right;">
+                      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                      <input pInputText
+                             #inputBuscaRapida
+                             type="text"
+                             size="36"
+                             placeholder="{{buscaRapidaNomePlaceholder}}"
+                             class="filtroGlobal">
+                    </span>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <th *ngIf="!col.hidden"
+                            [pSortableColumn]="col.fieldId"
+                            [style.text-align]="col.align"
+                            title="{{col.title}}">
+                            <!-- <p-sortIcon style="float: left;"
+                                        [field]="col.fieldId">
+                            </p-sortIcon> -->
+                            {{col.fieldName}}
+                        </th>
+                    </ng-container>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-resultset let-columns="columns" let-rowIndex="rowIndex">
+                <tr [id]="'listaRow__' + rowIndex" [pSelectableRowDblClick]="resultset">
+                    <ng-container *ngFor="let col of columns">
+                        <td [hidden]="col.hidden"
+                            [style.text-align]="col.align"
+                            (click)="col.fnClick ? col.fnClick($event, resultset, rowIndex, lista, listHandlerService) : ''"
+                            [id]="'listaCel__' + col.fieldId + '_' + rowIndex"
+                            [innerHtml]="resultset | resultsetPipe: col: rowIndex">
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td [attr.colspan]="columns?.length">
+                        <span *ngIf="!hasError">Nenhum registro encontrado</span>
+                        <span *ngIf="hasError"><font color='red'>Ocorreu um erro na operação</font></span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+
+export enum ChaveConfiguracao {
+
+  NON_DATABASE_VERSAO_API = 'NON_DATABASE_VERSAO_API',
+  HL_HEALTHMAP = 'HL_HEALTHMAP',
+  AMBIENTE = 'AMBIENTE'
+
+}

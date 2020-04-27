@@ -1,0 +1,21 @@
+<p-overlayPanel #op
+    [dismissable]="true"
+    (onBeforeShow)="onBeforeShow()"
+    (onAfterShow)="onAfterShow()"
+    (onBeforeHide)="onBeforeHide()"
+    (onAfterHide)="onAfterHide()">
+    <p-dropdown
+        #domCampo
+        name="domCampo"
+        id="domCampo"
+        [placeholder]="placeholder"
+        [(ngModel)]="selectedOption"
+        [options]="options"
+        [optionLabel]="optionLabel"
+        [autofocus]="true"
+        [autoWidth]="true"
+        (onChange)="onChangeCampo($event)"
+        (keyup.esc)="onEsc($event);">
+        <!-- (keyup.enter)="onEnter($event);" -->
+    </p-dropdown>
+</p-overlayPanel>

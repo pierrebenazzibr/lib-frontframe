@@ -1,0 +1,17 @@
+<p-overlayPanel #op
+    [dismissable]="true"
+    (onBeforeShow)="onBeforeShow()"
+    (onAfterShow)="onAfterShow()"
+    (onBeforeHide)="onBeforeHide()"
+    (onAfterHide)="onAfterHide()">
+    <input type="text"
+           #domCampo
+           name="domCampo"
+           id="domCampo"
+           [placeholder]="placeholder"
+           [(ngModel)]="campo"
+           (keyup.enter)="onEnter($event);"
+           (keyup.esc)="onEsc($event);"
+           pInputText>
+           <!-- (focus)="event.target.select()" -->
+</p-overlayPanel>
